@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Sit, Live Better</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>    <header>
+        <div class="profile">
+            <div class="profile-img"></div>
+            <div class="title-container">
+                <h1>Smart Sit, Live Better</h1>
+                <p class="subtitle">From the way you sit ... to the way you feel !</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Posture analysis dashboard -->
+        <section class="dashboard">
+            <h2>Posture Analysis</h2>
+
+            <div class="status-container">
+                <div class="current-status">
+                    <h3>Current Posture</h3>
+                    <div class="status" id="posture-status">
+                        <span class="indicator">Waiting for data...</span>
+                    </div>
+                </div>
+
+                <!-- Pressure sensor visualization -->
+                <div class="visualization">
+                    <h3>Pressure Distribution</h3>
+                    <div class="chair-visualization" id="chair-viz">
+                        <div class="sensor" id="sensor1">S1</div>
+                        <div class="sensor" id="sensor2">S2</div>
+                        <div class="sensor" id="sensor3">S3</div>
+                        <div class="sensor" id="sensor4">S4</div>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Posture Video Analysis</h2>
+            <div class="posenet-wrapper">
+                    <div class="video-block">
+                        <div id="posenet-container">
+                            <video id="video" playsinline autoplay muted></video>
+                            <canvas id="output"></canvas>
+                        </div>
+                        <div class="video-controls">
+                            <button id="toggle-camera" class="btn">Start Camera</button>
+                            <p class="video-help">Camera not showing? Make sure you've allowed camera access in your browser.</p>
+                        </div>
+                    </div>
+                    <div class="feedback-panel" id="feedback-panel">
+                        <div class="posture-box" id="posture-feedback">
+                            <h4>Status</h4>
+                            <p id="feedback-status">Waiting for data...</p>
+                            <h4>Advice</h4>
+                            <p id="feedback-description">Waiting for posture evaluation...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Historical posture data -->
+        <section class="history">
+            <h2>Posture History</h2>
+
+            <!-- Filter data by date -->
+            <div class="date-filters">
+                <input type="date" id="from-date">
+                <input type="date" id="to-date">
+                <button id="filter-btn" class="btn">Filter</button>
+            </div>
+
+            <!-- Chart for visual history -->
+            <div class="history-container" id="history-container">
+                <canvas id="history-chart"></canvas>
+            </div>
+
+            <!-- Table for detailed history -->
+            <div class="history-table-container">
+                <table id="history-table">
+                    <thead>
+                        <tr>
+                            <th>Date/Time</th>
+                            <th>Posture Status</th>
+                            <th>Sensor Data</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-data">
+                        <!-- History data will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>    <footer>
+        <p>&copy; 2025 Carolina, Cecilia, Tatiana, Massimo | SUPSI</p>
+    </footer>
+
+    <!-- Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/posenet"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <!-- Application scripts -->
+    <script src="/js/chair.js"></script>
+    <script src="/js/posenet.js"></script>
+    <script src="/js/history.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>
