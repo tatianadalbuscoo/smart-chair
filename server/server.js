@@ -26,7 +26,6 @@ const io = socketIo(server);  // Attach Socket.IO to the server for WebSocket co
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, '../public')));
 
 // Set the MongoDB connection URI (from env or default to localhost)
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/smartchair';
